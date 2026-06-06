@@ -1,11 +1,18 @@
 package pieces;
 
 public class Pawn extends Piece{
-    public Pawn(String color, int  position_x, int position_y, char symbol){
-        super(color, position_x, position_y, symbol);
+    public Pawn(String color, int[] position, char symbol){
+        super(color, position, symbol);
         
     }
-    public int moviment(){
+
+    @Override
+    public boolean is_valid_movement(){
+        return true;
+    }
+
+    @Override
+    public int[] movement(){
         
     }
     

@@ -1,25 +1,19 @@
 package pieces;
 
-public class Piece {
+public abstract class Piece {
     private String color;
-    private int position_x;
-    private int position_y;
+    private  int[] position;
     private char symbol;
     
-    public Piece(String color, int  position_x, int position_y, char symbol){
+    public Piece(String color, int[]  position, char symbol){
         this.color = color;
-        this.position_x = position_x;
-        this.position_y = position_y;
+        this.position = position;
         this.symbol = symbol;
     }
 
     //Getters
-    public int getPosition_x(){
-        return position_x;
-    }
-
-    public int getPosition_y(){
-        return position_y;
+    public int[] getPosition(){
+        return position;
     }
 
     public String getColor(){
@@ -31,12 +25,8 @@ public class Piece {
     }
 
     //Setters
-    public void setPosition_x(int position_x){
-        this.position_x = position_x;
-    }
-
-    public void setPosition_y(int position_y){
-        this.position_y = position_y;
+    public void setPosition(int[] position){
+        this.position = position;
     }
 
     public void setColor(String color){
@@ -46,4 +36,13 @@ public class Piece {
     public void setSymbol(char symbol){
         this.symbol = symbol;
     }
+
+    public abstract boolean is_valid_movement();
+
+    public abstract void all_valid_movements();
+
+    public abstract void display_movements();
+
+    public abstract int[] movement();
+
 }
