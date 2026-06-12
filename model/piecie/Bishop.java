@@ -1,4 +1,4 @@
-package model;
+package model.piecie;
 
 public class Bishop {
     

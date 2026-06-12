@@ -1,4 +1,4 @@
-package model;
+package model.piecie;
 
 public abstract class Piece {
     private String color;
