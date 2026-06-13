@@ -7,12 +7,12 @@ public class Pawn extends Piece{
     }
 
     @Override
-    public boolean is_valid_movement(){
+    public boolean isValidMove(){
         return true;
     }
 
     @Override
-    public int[] movement(){
+    public int[] getMove(){
         
     }
     

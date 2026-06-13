@@ -8,22 +8,22 @@ public class Knight extends Piece{
     }
 
     @Override
-    public boolean is_valid_movement(){
+    public boolean isValidMove(){
         return true;
     }
 
     @Override
-    public void all_valid_movements(){
+    public void calculateValidMoves(){
 
     }
 
     @Override
-    public void display_movements(){
+    public void showMoves(){
 
     }
 
     @Override
-    public int[] movement(){
+    public int[] getMove(){
         
     }
 }

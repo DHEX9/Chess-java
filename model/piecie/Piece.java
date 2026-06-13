@@ -37,12 +37,12 @@ public abstract class Piece {
         this.symbol = symbol;
     }
 
-    public abstract boolean is_valid_movement();
+    public abstract boolean isValidMove();
 
-    public abstract void all_valid_movements();
+    public abstract void calculateValidMoves();
 
-    public abstract void display_movements();
+    public abstract void showMoves();
 
-    public abstract int[] movement();
+    public abstract int[] getMove();
 
 }

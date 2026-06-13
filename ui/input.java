@@ -1,5 +1,5 @@
 package ui;
 
-public class input {
+public class Input {
     
 }
