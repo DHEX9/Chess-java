@@ -1,5 +1,7 @@
 package ui;
 
+import model.piece.Piece;
+
 public class Output {
     public static final String RESET = "\u001B[0m";
     public static final String BLACK_BG = "\u001B[40m";
@@ -7,31 +9,45 @@ public class Output {
     public static final String GREEN_BG = "\u001B[42m";
     public static final String MARGIN = "                                                                 ";
 
-    public static void main(String[] args) {
+    public static void output(Piece[][] board) {
 
         System.out.print("\n\n");
-        for (int i = 0; i < 8; i++) { // Linhas
-            for (int h = 0; h < 3; h++) { // 3 linhas de altura
 
-                System.out.print(MARGIN);
+        for (int i = 0; i < 8; i++) { // Lines
+            for (int h = 0; h < 3; h++) { // 3 lines of height
 
-                for (int j = 0; j < 8; j++) { // Colunas
+                System.out.print(MARGIN); // Margin
 
-                    if((i+j) % 2 == 0){
-                        if(h == 1){
-                            System.out.print(BLACK_BG + "   ♚️    " + RESET);
+                for (int j = 0; j < 8; j++) { // columns
+
+                    if((i+j) % 2 == 0){ // Cores alternadas
+
+                        if(board[i][j] != null){ //É obejto
+
+                            if(h == 1){ //Meio do quadrado
+                                System.out.print(BLACK_BG + "   " + board[i][j].getSymbol() + "    " + RESET);
+                            }
+                            else{
+                                System.out.print(BLACK_BG + "        " + RESET);
+                            }
                         }
                         else{
                             System.out.print(BLACK_BG + "        " + RESET);
                         }
                     }
                     else{
-                        if(h == 1){
-                            System.out.print("   ♚️    ");
+                        if(board[i][j] != null){
+                            if(h == 1){
+                            System.out.print("   " + board[i][j].getSymbol() + "    ");
+                            }
+                            else{
+                                System.out.print("        ");
+                            }
                         }
                         else{
                             System.out.print("        ");
                         }
+                        
                     }
                 }
                 System.out.println();
