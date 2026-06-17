@@ -15,7 +15,7 @@ public class Knight extends Piece{
     }
 
     @Override
-    public void calculateValidMoves(Piece[][] board){
+    public MoveType[][] calculateValidMoves(Piece[][] board){
         MoveType[][] moveType = new MoveType[8][8];
 
         for (int i = 0; i < offset.length; i++) {
@@ -23,5 +23,12 @@ public class Knight extends Piece{
                 moveType[offset[i][0]][offset[i][1]] = MoveType.MOVE;
             }
         }
+        return null;
+    }
+
+    @Override
+    public Piece[][] pieceMove(Piece[][] board, Piece piece){
+        
+        return board;
     }
 }

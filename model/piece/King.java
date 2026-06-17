@@ -15,8 +15,8 @@ public class King extends Piece{
     }
 
     @Override
-    public void calculateValidMoves(Piece[][] board){
-
+    public MoveType[][] calculateValidMoves(Piece[][] board){
+        return null;
     }
 
     public boolean roque(){
@@ -25,5 +25,11 @@ public class King extends Piece{
 
     public boolean doesNotLeaveKingInCheck(){
         return true;
+    }
+
+    @Override
+    public Piece[][] pieceMove(Piece[][] board, Piece piece){
+        
+        return board;
     }
 }

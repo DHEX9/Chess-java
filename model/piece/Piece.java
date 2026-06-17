@@ -39,7 +39,11 @@ public abstract class Piece {
 
     public abstract boolean isValidMove(int[] position);
 
-    public abstract void calculateValidMoves(Piece[][] board);
+    public abstract MoveType[][] calculateValidMoves(Piece[][] board);
+
+    public abstract Piece[][] pieceMove(Piece[][] board, Piece piece);
 
     public static final String GREEN_BG = "\u001B[42m";
+
+    
 }

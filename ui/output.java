@@ -9,8 +9,17 @@ public class Output {
     public static final String GREEN_BG = "\u001B[42m";
     public static final String MARGIN = "                                                                 ";
 
+    static void clearScreen() {
+        System.out.print("\033[2J\033[H\n\n");
+        System.out.flush();
+    }
+
     public static void messagePlayerTurn(String message){
         System.out.print(MARGIN + message);
+    }
+
+    public static void messagePieceConfirmation(){
+        System.out.println("Confirm part? Any key / N");
     }
 
     public static void output(Piece[][] board) {
