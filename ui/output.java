@@ -1,11 +1,11 @@
 package ui;
 
-import model.piece.Piece;
-import model.piece.Piece.MoveType;
+import model.Piece;
+import model.Piece.MoveType;
 
 public class Output {
     public static final String RESET = "\u001B[0m";
-    public static final String BLACK_BG = "\u001B[40m";
+    public static final String GRAY_BG = "\u001B[40m";
     public static final String RED_BG = "\u001B[41m";
     public static final String GREEN_BG = "\u001B[42m";
     public static final String MARGIN = "                                                                 ";
@@ -16,59 +16,94 @@ public class Output {
     }
 
     public static void messagePlayerTurn(String message){
-        System.out.print(MARGIN + message);
+        System.out.println(MARGIN + message);
+    }
+
+    public static void messageChoosePiece(){
+        System.out.print(MARGIN + "Choose a piece: ");
     }
 
     public static void messagePieceConfirmation(){
-        System.out.println("Confirm part? Any key / N");
+        System.out.print("\r" + MARGIN + "Confirm piece? Any key / N: ");
+    }
+
+    public static void messagePieceLocked(){
+        System.out.println(MARGIN + "This piece is stuck. ");
+    }
+
+    public static void messageErrorChoosePiece(){
+        System.out.println(MARGIN + "You don't have the part in this location.");
+    }
+    public static void showSquareValidMoves(Piece piece, boolean blackSquare, int line, MoveType moveType) {
+        String background;
+        String content = "        ";
+
+        if(moveType == MoveType.CAPTURE){
+            background = RED_BG;
+        }
+        else if(moveType == MoveType.MOVE){
+            background = GREEN_BG;
+        }
+        else background = blackSquare ? GRAY_BG : "";
+
+        if(piece != null && line == 1){
+            content = "   " + piece.getSymbol() + "    ";
+        }
+
+        System.out.print(background + content + RESET);
     }
 
     public static void showValidMoves(Piece[][] board, MoveType[][] moveType){
-        
+
+        clearScreen();
+
+        System.out.print("\n\n");
+
+        for (int row = 0; row < 8; row++) { // Lines
+            for (int line = 0; line < 3; line++) { // 3 lines of height
+
+                System.out.print(MARGIN); // Margin
+
+                for (int col = 0; col < 8; col++) { // columns
+                    showSquareValidMoves(board[row][col], (row + col) % 2 == 0, line, moveType[row][col]);
+                }
+
+                System.out.println();
+
+            }
+        }
+        System.out.print("\n\n");
+    }
+
+    public static void printSquare(Piece piece, boolean blackSquare, int line) {
+
+        String background = blackSquare ? GRAY_BG : "";
+        String content = "        ";
+
+        if(piece != null && line == 1){
+            content = "   " + piece.getSymbol() + "    ";
+        }
+
+        System.out.print(background + content + RESET);
     }
 
     public static void output(Piece[][] board) {
 
+        clearScreen();
+
         System.out.print("\n\n");
 
-        for (int i = 0; i < 8; i++) { // Lines
-            for (int h = 0; h < 3; h++) { // 3 lines of height
+        for (int row = 0; row < 8; row++) { // Lines
+            for (int line = 0; line < 3; line++) { // 3 lines of height
 
                 System.out.print(MARGIN); // Margin
 
-                for (int j = 0; j < 8; j++) { // columns
-
-                    if((i+j) % 2 == 0){ // Cores alternadas
-
-                        if(board[i][j] != null){ //É obejto
-
-                            if(h == 1){ //Meio do quadrado
-                                System.out.print(BLACK_BG + "   " + board[i][j].getSymbol() + "    " + RESET);
-                            }
-                            else{
-                                System.out.print(BLACK_BG + "        " + RESET);
-                            }
-                        }
-                        else{
-                            System.out.print(BLACK_BG + "        " + RESET);
-                        }
-                    }
-                    else{
-                        if(board[i][j] != null){
-                            if(h == 1){
-                            System.out.print("   " + board[i][j].getSymbol() + "    ");
-                            }
-                            else{
-                                System.out.print("        ");
-                            }
-                        }
-                        else{
-                            System.out.print("        ");
-                        }
-                        
-                    }
+                for (int col = 0; col < 8; col++) { // columns
+                    printSquare(board[row][col], (row + col) % 2 == 0, line);
                 }
+
                 System.out.println();
+
             }
         }
         System.out.print("\n\n");

@@ -1,7 +1,8 @@
 package game;
 
 import game.Inicialization.Player;
-import model.piece.Piece;
+import model.Piece;
+import model.Piece.MoveType;
 import ui.Input;
 import ui.Output;
 
@@ -18,15 +19,27 @@ public class Turn {
 
         while(true){
 
+            Output.messageChoosePiece();
+
             int[] position = Input.readPosition();
 
-            if(board[position[0]][position[1]].getColor() != player){
-                System.out.println("You don't have the part in this location.");
+            if(board[position[0]][position[1]] == null ||board[position[0]][position[1]].getColor() != player){
+                Output.messageErrorChoosePiece();
                 continue;
             }
 
-            Output.showValidMoves(board, board[position[0]][position[1]].calculateValidMoves(board, player, position));
+            MoveType[][] moveType = board[position[0]][position[1]].calculateValidMoves(board, player, position);
+            Output.showValidMoves(board, moveType);
+            player.displayMessage();
+
+            board[position[0]][position[1]].setMoveType(moveType);
             
+            if(board[position[0]][position[1]].isLocked()){
+                Output.messagePieceLocked();
+                continue;
+            }
+            
+            Output.messagePieceConfirmation();
             if(Input.cancelPiece()) continue;
             
             return position;
@@ -38,8 +51,8 @@ public class Turn {
         while(true){
 
             int[] move = Input.readPosition();
-
-            if(board[position[0]][position[1]].isValidMove(board, player, position, move)){
+            
+            if(board[position[0]][position[1]].isValidMove(move)){
                 board[move[0]][move[1]] = board[position[0]][position[1]];
                 board[position[0]][position[1]] = null;
                 return board;

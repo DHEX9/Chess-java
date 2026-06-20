@@ -1,7 +1,7 @@
 package game;
 
 import game.Inicialization.Player;
-import model.piece.Piece;
+import model.Piece;
 import ui.Output;
 
 public class Game {
@@ -17,10 +17,6 @@ public class Game {
             int[] position = Turn.choosePiece(board, player);
             
             board = Turn.move(board, position, player);
-
-            if(GameState.xequeMate()){
-                break;
-            }
             
         }
     }

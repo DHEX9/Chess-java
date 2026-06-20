@@ -1,16 +1,16 @@
-package model.piece;
+package model;
 
 import game.Inicialization.Player;
 
 public class King extends Piece{
     private boolean roque = true;
 
-    public King(Player color, String symbol, int[] position){
-        super(color, symbol, position);
+    public King(Player color, String symbol){
+        super(color, symbol);
     }
 
     @Override
-    public boolean isValidMove(Piece[][] board, Player player, int[] position, int[] move){
+    public boolean isValidMove(int[] move){
         return true;
     }
 
@@ -25,11 +25,5 @@ public class King extends Piece{
 
     public boolean doesNotLeaveKingInCheck(){
         return true;
-    }
-
-    @Override
-    public Piece[][] pieceMove(Piece[][] board, Piece piece){
-        
-        return board;
     }
 }

@@ -1,6 +1,6 @@
 package game;
 
-import model.piece.Pawn;
+import model.Pawn;
 
 public class GameState {
     public static Pawn enPassantPawn;
