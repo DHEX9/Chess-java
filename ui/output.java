@@ -8,6 +8,7 @@ public class Output {
     public static final String GRAY_BG = "\u001B[40m";
     public static final String RED_BG = "\u001B[41m";
     public static final String GREEN_BG = "\u001B[42m";
+    public static final String FOREST_GREEN_BG = "\u001B[48;5;28m";
     public static final String MARGIN = "                                                                 ";
 
     static void clearScreen() {
@@ -34,17 +35,20 @@ public class Output {
     public static void messageErrorChoosePiece(){
         System.out.println(MARGIN + "You don't have the part in this location.");
     }
-    public static void showSquareValidMoves(Piece piece, boolean blackSquare, int line, MoveType moveType) {
+    public static void showSquareValidMoves(Piece piece, boolean graySquare, int line, MoveType moveType) {
         String background;
         String content = "        ";
 
         if(moveType == MoveType.CAPTURE){
             background = RED_BG;
         }
-        else if(moveType == MoveType.MOVE){
+        else if(moveType == MoveType.MOVE && graySquare){
             background = GREEN_BG;
         }
-        else background = blackSquare ? GRAY_BG : "";
+        else if(moveType == MoveType.MOVE){
+            background = FOREST_GREEN_BG;
+        }
+        else background = graySquare ? GRAY_BG : "";
 
         if(piece != null && line == 1){
             content = "   " + piece.getSymbol() + "    ";

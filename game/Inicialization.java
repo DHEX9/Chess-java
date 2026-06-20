@@ -76,7 +76,7 @@ public class Inicialization {
         board[4][4] = new Bishop(Player.WHITE, "♗");
         
         //Black Queen
-        board[7][3] = new Queen(Player.WHITE, "♕");
+        board[4][4] = new Queen(Player.WHITE, "♕");
         
         //Black King
         board[7][4] = new King(Player.WHITE, "♔");

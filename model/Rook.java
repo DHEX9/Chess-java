@@ -1,7 +1,6 @@
 package model;
 
 import game.Inicialization.Player;
-import model.Piece.MoveType;
 
 public class Rook extends Piece{
     private final int[][] offsets = {{1,0}, {-1, 0}, {0, 1}, {0, -1}};
