@@ -4,7 +4,7 @@ import game.Inicialization.Player;
 import model.Piece.MoveType;
 
 public class Rook extends Piece{
-    private final int[][] offsets = {{1,0}, {-1,0}, {0, 1}, {0, -1}};
+    private final int[][] offsets = {{1,0}, {-1, 0}, {0, 1}, {0, -1}};
     private boolean roque = true;
     
     public Rook(Player color, String symbol){
@@ -25,7 +25,7 @@ public class Rook extends Piece{
         
         MoveType[][] moveType = new MoveType[8][8];
 
-        for (int[] offset : offsets) {
+        for (int[] offset : offsets){
             
             int row = position[0];
             int col = position[1];
@@ -42,9 +42,11 @@ public class Rook extends Piece{
                 }
                 else if(board[row][col].getColor() != player){
                     moveType[row][col] = MoveType.CAPTURE;
+                    break;
                 }
-                
-                break;
+                else{
+                    break;
+                }
 
             }
         }
