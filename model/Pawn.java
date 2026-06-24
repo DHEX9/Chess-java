@@ -1,5 +1,6 @@
 package model;
 
+import game.GameState;
 import game.Inicialization.Player;
 
 public class Pawn extends Piece{
@@ -50,9 +51,9 @@ public class Pawn extends Piece{
 
         if(doubleAdvance && board[row + intDoubleAdvance][col] == null && board[row + (intDoubleAdvance * 2)][col] == null){
             
-            System.out.print("Passei aqui");
             moveType[row + intDoubleAdvance][col] = MoveType.MOVE;
             moveType[row + (intDoubleAdvance * 2)][col] = MoveType.MOVE;
+            GameState.enPassantPawn = (Pawn) board[row][col];
             doubleAdvance = false;
 
         } 
