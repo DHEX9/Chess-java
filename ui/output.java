@@ -35,7 +35,7 @@ public class Output {
     public static void messageErrorChoosePiece(){
         System.out.println(MARGIN + "You don't have the part in this location.");
     }
-    public static void showSquareValidMoves(Piece piece, boolean graySquare, int line, MoveType moveType) {
+    public static void showSquareValidMoves(Piece piece, boolean graySquare, int line, MoveType moveType){
         String background;
         String content = "        ";
 
@@ -79,11 +79,11 @@ public class Output {
         System.out.print("\n\n");
     }
 
-    public static void printSquare(Piece piece, boolean blackSquare, int line) {
+    public static void printSquare(Piece piece, boolean blackSquare, int line, char characterRow) {
 
         String background = blackSquare ? GRAY_BG : "";
         String content = "        ";
-
+        String space = (line == 1) ? "  " : "";
         if(piece != null && line == 1){
             content = "   " + piece.getSymbol() + "    ";
         }
@@ -97,13 +97,14 @@ public class Output {
 
         System.out.print("\n\n");
 
+        char characterRow = 'A';
         for (int row = 0; row < 8; row++) { // Lines
             for (int line = 0; line < 3; line++) { // 3 lines of height
 
                 System.out.print(MARGIN); // Margin
 
                 for (int col = 0; col < 8; col++) { // columns
-                    printSquare(board[row][col], (row + col) % 2 == 0, line);
+                    printSquare(board[row][col], (row + col) % 2 == 0, line, characterRow);
                 }
 
                 System.out.println();
