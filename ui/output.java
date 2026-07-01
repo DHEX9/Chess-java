@@ -41,6 +41,10 @@ public class Output {
         System.out.print("\r" + MARGIN + "Choose a position: ");
     }
 
+    public static void messageInvalidPosition(){
+        System.out.println("Invalid position");
+    }
+
     public static void showSquareValidMoves(Piece piece, boolean graySquare, int line, MoveType moveType){
         String background;
         String content = "        ";

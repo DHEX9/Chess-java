@@ -61,7 +61,7 @@ public class Turn {
                 
             }
 
-            System.out.println("Invalid");
+            Output.messageInvalidPosition();
             
         }
     }
