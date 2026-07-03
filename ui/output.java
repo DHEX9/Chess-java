@@ -42,7 +42,7 @@ public class Output {
     }
 
     public static void messageInvalidPosition(){
-        System.out.println("Invalid position");
+        System.out.println(MARGIN + "Invalid position");
     }
 
     public static void showSquareValidMoves(Piece piece, boolean graySquare, int line, MoveType moveType){

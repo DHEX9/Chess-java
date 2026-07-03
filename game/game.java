@@ -18,6 +18,9 @@ public class Game {
             
             board = Turn.move(board, position, player);
             
+            if(GameState.xequeMate()) break;
+            GameState.xeque();
+
         }
     }
 }

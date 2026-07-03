@@ -14,6 +14,6 @@ public class GameState {
     }
 
     public static boolean xequeMate(){
-        return true;
+        return false;
     }
 }
